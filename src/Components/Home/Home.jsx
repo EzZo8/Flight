@@ -9,7 +9,11 @@ const Home = () => {
 
   useEffect( () => {
     Aos.init({duration:2000})
-  },[])
+  },[]);
+
+  function handleLoadedData(event) {
+    event.target.play();
+  };
 
   return (
     <div className='home flex container'>
@@ -20,7 +24,7 @@ const Home = () => {
       <div data-aos="fade-down" data-aos-duration="2500" className="homeImages flex">
 
         <div className="videoDiv">
-          <video className='video' autoPlay muted loop src={Bgvid}></video>
+          <video className='video' playsInline onLoadedData={handleLoadedData} autoPlay muted loop src={Bgvid}></video>
         </div>
 
         <img src={TakeOff} className='plane'  />
